@@ -1,18 +1,20 @@
-import {useState} from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import "./App.css";
 import "./login.css";
 
-function Login() {
+function Login() { // Capitalized component name
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-const handleSubmit = async (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const response = await fetch("http://localhost:5000/login", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password }),
       });
@@ -20,9 +22,9 @@ const handleSubmit = async (e) => {
       const data = await response.json();
 
       if (response.ok) {
-        alert(data.message);
+        alert(data.message || "Login successful!");
       } else {
-        alert(data.message);
+        alert(data.message || "Login failed. Please try again.");
       }
     } catch (error) {
       console.error("Error:", error);
@@ -49,6 +51,9 @@ const handleSubmit = async (e) => {
           required
         />
         <button type="submit">Login</button>
+        <p>
+          Don't have an account? <Link to="/register">Register</Link>
+        </p>
       </form>
     </div>
   );
