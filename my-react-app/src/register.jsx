@@ -1,114 +1,123 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import "./App.css";
+import "./login.css";
 
-const RegistrationForm = () => {
+function Register() {
   const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    agreeTerms: false,
+    fullName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
 
-  const [error, setError] = useState('');
+  const [termsAccepted, setTermsAccepted] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === 'checkbox' ? checked : value,
-    });
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleTermsChange = (e) => {
+    setTermsAccepted(e.target.checked);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setError('');
-
     if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match.');
+      alert("Passwords do not match!");
       return;
     }
-
-    if (!formData.agreeTerms) {
-      setError('You must agree to the Terms & Conditions.');
+    if (!termsAccepted) {
+      alert("Please agree to the Terms & Conditions!");
       return;
     }
-
-    // Handle form submission logic here (e.g., API call)
-    console.log(formData);
+    // Replace with your API call or registration logic
+    console.log("Registration data:", formData);
+    setFormData({ fullName: "", email: "", password: "", confirmPassword: "" });
+    setTermsAccepted(false);
   };
 
   return (
-    <div style={{ backgroundColor: '#e6f3ff', padding: '20px', borderRadius: '10px' }}>
+    <div className="register-container">
       <h2>Create an Account</h2>
-      <p>Join EcoTrade and start recycling smarter.</p>
-      {error && <div style={{ color: 'red' }}>{error}</div>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Full Name</label>
+      <p className="subtitle">Join EcoTrade and start recycling smarter.</p>
+      <form onSubmit={handleSubmit} className="register-form">
+        <div className="form-group">
+          <label htmlFor="fullName">Full Name</label>
           <input
             type="text"
+            id="fullName"
             name="fullName"
             value={formData.fullName}
             onChange={handleChange}
-            placeholder="John Doe"
             required
+            placeholder="John Doe"
           />
         </div>
-        <div>
-          <label>Email</label>
+        <div className="form-group">
+          <label htmlFor="email">Email</label>
           <input
             type="email"
+            id="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="you@example.com"
             required
+            placeholder="you@example.com"
           />
         </div>
-        <div>
-          <label>Password</label>
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
           <input
             type="password"
+            id="password"
             name="password"
             value={formData.password}
             onChange={handleChange}
-            placeholder="Create a password"
             required
+            placeholder="Create a password"
           />
         </div>
-        <div>
-          <label>Confirm Password</label>
+        <div className="form-group">
+          <label htmlFor="confirmPassword">Confirm Password</label>
           <input
             type="password"
+            id="confirmPassword"
             name="confirmPassword"
             value={formData.confirmPassword}
             onChange={handleChange}
-            placeholder="Re-enter password"
             required
+            placeholder="Re-enter password"
           />
         </div>
-        <div>
-          <label>
-            <input
-              type="checkbox"
-              name="agreeTerms"
-              checked={formData.agreeTerms}
-              onChange={handleChange}
-            /> I agree to the Terms & Conditions
-          </label>
+        <div className="form-group terms-group">
+          <input
+            type="checkbox"
+            id="terms"
+            name="terms"
+            checked={termsAccepted}
+            onChange={handleTermsChange}
+            required
+          />
+          <label htmlFor="terms">I agree to the Terms & Conditions</label>
         </div>
-        <button type="submit" style={{ backgroundColor: '#4CAF50', color: 'white', padding: '10px' }}>
+        <button type="submit" className="submit-button" disabled={!termsAccepted}>
           Register
         </button>
-        <p>or</p>
-        <button style={{ backgroundColor: '#4285f4', color: 'white', padding: '10px' }}>
+        <p className="or-text">or</p>
+        <button type="button" className="google-button">
           Register with Google
         </button>
-        <p>Already have an account? <Link to="/login">Login</Link></p>
       </form>
+      <p className="login-link">
+        Already have an account? <Link to="/login">Login</Link>
+      </p>
     </div>
   );
-};
+}
 
-export default RegistrationForm;
+export default Register;
