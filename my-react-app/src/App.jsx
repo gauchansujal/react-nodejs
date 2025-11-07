@@ -1,7 +1,7 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import Login from './login';
-import Register from './register';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Login from './login';     // Fixed: Capital L
+import Register from './Register'; // Same for Register
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/" element={<Navigate to="/login" />} /> {/* Redirect root to /login */}
+        <Route path="/" element={<Navigate to="/login" />} />
       </Routes>
     </Router>
   );

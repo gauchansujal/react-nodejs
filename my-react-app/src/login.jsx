@@ -2,33 +2,35 @@ import { useState } from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import "./App.css";
 import "./login.css";
-
-function Login() { // Capitalized component name
+function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/login", {
+      const response = await fetch("http://localhost:5000/api/users/login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        alert(data.message || "Login successful!");
+        alert("Login successful!");
+        console.log("User:", data.user);
+        // Save token if you add JWT later
       } else {
-        alert(data.message || "Login failed. Please try again.");
+        alert(data.message || "Login failed");
       }
     } catch (error) {
-      console.error("Error:", error);
-      alert("Something went wrong. Please try again ❌");
+      alert("Network error. Is backend running?");
+    } finally {
+      setLoading(false);
     }
   };
 
