@@ -8,6 +8,7 @@ app.use(express.json());
 // ROUTES
 const userRoutes = require('./routes/user');
 app.use('/api/users', userRoutes);
+app.use(express.urlencoded({ extended: true }));
 
 // TEST
 app.get('/test', (req, res) => {
