@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./App.css";
 import "./login.css";
+
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ function Register() {
   });
 
   const [termsAccepted, setTermsAccepted] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,22 +27,52 @@ function Register() {
     setTermsAccepted(e.target.checked);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (formData.password !== formData.confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
+
     if (!termsAccepted) {
       alert("Please agree to the Terms & Conditions!");
       return;
     }
-    // Replace with your API call or registration logic
-    console.log("Registration data:", formData);
-    setFormData({ fullName: "", email: "", password: "", confirmPassword: "" });
-    setTermsAccepted(false);
-  };
 
+    try {
+      const response = await fetch("http://localhost:5000/api/users/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullname: formData.fullName,
+          email: formData.email,
+          password: formData.password,
+          confirmpassword: formData.confirmPassword,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        alert(data.message || "Registration failed!");
+        return;
+      }
+
+      alert("Registration successful!");
+      console.log("User created:", data.user);
+
+      // Redirect to login page
+      navigate("/login");
+
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong. Please try again.");
+    }
+  };
+   
   return (
     <div className="register-container">
       <h2>Create an Account</h2>

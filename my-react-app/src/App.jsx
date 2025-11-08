@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './login';     // Fixed: Capital L
-import Register from './Register'; // Same for Register
+import Register from './register'; // Same for Register
 
 function App() {
   return (
