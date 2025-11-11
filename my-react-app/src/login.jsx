@@ -1,38 +1,44 @@
 import { useState } from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link, useNavigate} from "react-router-dom"; // Import Link from react-router-dom
 import "./App.css";
 import "./login.css";
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const [error, setError] = useState("") //for ui feedback
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setError("") ; // clear previous errors
 
     try {
       const response = await fetch("http://localhost:5000/api/users/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+        body: JSON.stringify({ email, password }) // ✅ Clean JSON
+      })
 
       const data = await response.json();
 
       if (response.ok) {
         alert("Login successful!");
         console.log("User:", data.user);
-        // Save token if you add JWT later
+        navigate('/home');
       } else {
-        alert(data.message || "Login failed");
+        setError(data.message || "Invalid email or password");
       }
-    } catch (error) {
-      alert("Network error. Is backend running?");
+    } catch (error) { // ✅ Fixed: 'error' not 'err'
+      setError("Network error. Is backend running?");
+      console.error("Login error:", error); // ✅ Fixed variable name
     } finally {
       setLoading(false);
     }
   };
+
 
   return (
     <div className="login-container">
