@@ -1,0 +1,24 @@
+
+.container {
+  text-align: center;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.lButton, .rButton {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.lButton {
+  background-color: #007bff;
+  color: white;
+}
+
+.rButton {
+  background-color: #28a745;
+  color: white;
+}
