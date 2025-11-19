@@ -1,7 +1,12 @@
 import {useState} from "react";
+import "./Fotter.css";
 function Footer (){
     return (
-        <h1>jiii</h1>
+        <div className ="box" >
+            <h1>EcoTrade</h1>
+            <p>smart recycling marktetplace connecting individuasl and bussinesses for sustainable material exchange.</p>
+
+        </div>
 
     )
 }
