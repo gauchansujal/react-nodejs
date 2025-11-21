@@ -1,5 +1,6 @@
 .box{
-    background:#0C8CE9;
+   
+    background:#1A2332  ;
     bottom:0;
   height: 500px;
   width:100%;
@@ -8,9 +9,49 @@
 
 }
 .h1{
-    font-size: large;
+    background: #ffff;
+}
+.head{
+    position: relative;
+    font-size: 22px;
     font-style: normal;
+    font-weight: 900;
     font-family: Arial, Helvetica, sans-serif;
     left: 50px;
-
+    margin-bottom: 10px;
+    height:200px;
+    z-index: -1px;
 }
+.paragraph,.list{
+    position: relative;
+    color: #7A8A9E;
+  
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    word-spacing: 3px;
+    line-height: 2;
+    
+  
+}
+.break-after::after{
+    content :"\A";
+    white-space: pre;
+}
+.head2{
+position: relative;
+display: block;
+bottom: 230px;
+left: 500px;
+}
+.list{
+    list-style: none;
+    padding-left: 0;
+}
+.head3{
+    position: relative;
+    display: block;
+    bottom: 540px;
+    left: 900px;
+}
+
