@@ -7,7 +7,9 @@ function Home() {
      
     <div>
      <Header /> 
-      <div></div>
+      <div className='homepage'>
+        <h1>hello world</h1>
+      </div>
        <Fotter/>
     
     </div>

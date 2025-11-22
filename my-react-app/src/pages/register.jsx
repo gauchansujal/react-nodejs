@@ -74,6 +74,7 @@ function Register() {
   };
    
   return (
+    
     <div className="register-container">
       <h2>Create an Account</h2>
       <p className="subtitle">Join EcoTrade and start recycling smarter.</p>
@@ -149,6 +150,7 @@ function Register() {
         Already have an account? <Link to="/login">Login</Link>
       </p>
     </div>
+  
   );
 }
 
