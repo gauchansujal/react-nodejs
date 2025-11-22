@@ -1,11 +1,18 @@
-html,
-body,
-#root {
+
+/* index.css → THIS FILE CANNOT BE EMPTY */
+html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
-} #root {
-  min-height: 100vh;                    /* This forces full viewport height */
+}
+
+#root {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/* This single line pushes the footer to the bottom */
+main {
+  flex: 1;
 }

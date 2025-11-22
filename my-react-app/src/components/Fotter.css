@@ -1,58 +1,32 @@
-.box{
-   
-  background:#1A2332  ;
-  bottom:0;
-  height: 350px;
-  width:100%;
-  left: 0;
- position: fixed;
-   z-index: -5;
-
-}
-.h1{
-    background: #ffff;
-}
-.head{
-    position: relative;
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 900;
-    font-family: Arial, Helvetica, sans-serif;
-    left: 50px;
-    margin-bottom: 10px;
-    height:200px;
-    z-index: -1px;
-}
-.paragraph,.list{
-    position: relative;
-    color: #7A8A9E;
-  
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    word-spacing: 3px;
-    line-height: 2;
-    
-  
-}
-.break-after::after{
-    content :"\A";
-    white-space: pre;
-}
-.head2{
-position: relative;
-display: block;
-bottom: 230px;
-left: 500px;
-}
-.list{
-    list-style: none;
-    padding-left: 0;
-}
-.head3{
-    position: relative;
-    display: block;
-    bottom: 540px;
-    left: 900px;
+/* Footer.css */
+.footer {
+  background: #1A2332;
+  color: #7A8A9E;
+  padding: 60px 40px;
+  width: 100%;
+  flex-shrink: 0;   /* Important for flex layout */
 }
 
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.col h1, .col h3 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  line-height: 2;
+}
+
+.list li {
+  margin-bottom: 10px;
+}

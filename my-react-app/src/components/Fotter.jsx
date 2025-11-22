@@ -1,45 +1,43 @@
-import {useState} from "react";
-import "./Fotter.css";
-function Footer (){
-    return (
-        <div className ="box" >
-            <section class="head">
-                <h1>EcoTrade</h1>
-                <p className="paragraph">
-                <span className="break-after">smart recycling marktetplace </span> 
-                <span className="break-after">connecting individuasl and bussinesses</span>
-                <span className = "break-after">for sustainable material exchange.</span></p>
-                     
-          
-            
-            <aside class = "head2">
-                <h1>Quick Links</h1>
-                <ol className="list">
-                 <li>Home</li>
-                 <li>Marketplace</li>
-                 <li>Price Trends</li>
-                 <li>Request Pcikup</li>
-                 <li>Become a Colection</li>
-                 </ol>
-            </aside>
-            <aside className="head3">
-                <h1>Materials</h1>
-                <ol className="list">
-                    <li>Plastic</li>
-                    <li>Metal</li>
-                    <li>Paper</li>
-                    <li>Glass</li>
-                    <li>Electronics</li>
-                </ol>
-            </aside>
+// components/Footer.jsx
+import "./Fotter.css";  // rename file to Footer.css (not Fotter.css)
 
-            </section>
-    
-            
-       
+function Footer() {
+  return (
+    <footer className="footer">   {/* Use <footer>, not <div className="box"> */}
+      <div className="footer-content">
+        <section className="col">
+          <h1>EcoTrade</h1>
+          <p className="paragraph">
+            smart recycling marketplace<br />
+            connecting individuals and businesses<br />
+            for sustainable material exchange.
+          </p>
+        </section>
 
-        </div>
+        <section className="col">
+          <h3>Quick Links</h3>
+          <ul className="list">
+            <li>Home</li>
+            <li>Marketplace</li>
+            <li>Price Trends</li>
+            <li>Request Pickup</li>
+            <li>Become a Collection</li>
+          </ul>
+        </section>
 
-    )
+        <section className="col">
+          <h3>Materials</h3>
+          <ul className="list">
+            <li>Plastic</li>
+            <li>Metal</li>
+            <li>Paper</li>
+            <li>Glass</li>
+            <li>Electronics</li>
+          </ul>
+        </section>
+      </div>
+    </footer>
+  );
 }
+
 export default Footer;

@@ -1,25 +1,17 @@
-import React from 'react';
-import Header from "../components/Header"; // ✅ capital H
-import Fotter from "../components/Fotter";
+// pages/home.jsx
+import Header from "../components/Header";
+import "./home.css";
 
 function Home() {
   return (
-     
-    <div>
-     <Header /> 
-      <div className='homepage'>
-        <h1>hello world</h1>
+    <>
+      <Header />
+      <div className="homepage">
+        <h1>Hello World</h1>
       </div>
-       <Fotter/>
-    
-    </div>
-   
-
-   
+      {/* REMOVE <Footer /> FROM HERE! */}
+    </>
   );
-
-
 }
-  
 
 export default Home;
