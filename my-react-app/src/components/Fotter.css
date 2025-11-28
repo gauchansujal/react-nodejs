@@ -4,7 +4,8 @@
   color: #7A8A9E;
   padding: 60px 40px;
   width: 100%;
-  flex-shrink: 0;   /* Important for flex layout */
+
+ /* Important for flex layout */
 }
 
 .footer-content {
