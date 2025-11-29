@@ -7,10 +7,10 @@ app.use(express.json());
 
 // ROUTES
 const userRoutes = require('./routes/user');
-const studentRoute = require("./routes/user");  
+const studentRoutes = require("./routes/user");  
 
 app.use('/api/users', userRoutes); 
-app.use('/api/users', studentRoute);
+app.use('/api/users', studentRoutes);
 
 app.use(express.urlencoded({ extended: true }));
 

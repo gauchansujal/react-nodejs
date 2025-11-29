@@ -2,9 +2,14 @@
 .footer {
   background: #1A2332;
   color: #7A8A9E;
-  padding: 60px 40px;
+  padding: 60px;
   width: 100%;
-
+  
+ bottom: 0;    
+ left: 0;     /* left edge */
+   
+  
+  box-sizing: border-box; 
  /* Important for flex layout */
 }
 

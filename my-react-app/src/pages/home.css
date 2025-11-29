@@ -1,4 +1,6 @@
-.homepage{
-    height: 100vh;
-   flex: 1;
+.header {
+    position: absolute;
+    width: 500px;
+    top: 60px;
+
 }
